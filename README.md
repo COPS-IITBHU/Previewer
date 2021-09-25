@@ -1,2 +1,2 @@
-# ubiquitous_template
-A template for COPS Projects consisting of well structured templates for PR, Issues and README
+# Previewer
+Android SDK/Library for generating a preview for each kind of file (PDF/PPTX/DOC/MP4) present locally in the device.
