@@ -15,7 +15,4 @@ class Previewer {
         }
     }
 
-    fun printHello() {
-        println("Hello World")
-    }
 }
