@@ -4,7 +4,7 @@ import android.app.Application
 
 object Previewer{
 
-    private var contextApplication : Application? = null
+    private lateinit var contextApplication : Application
 
     fun init(contextApplication: Application) {
         this.contextApplication=contextApplication
