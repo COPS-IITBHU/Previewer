@@ -4,10 +4,10 @@ import android.app.Application
 
 object Previewer{
 
-    private lateinit var contextApplication : Application
+    private lateinit var appContext : Application
 
-    fun init(contextApplication: Application) {
-        this.contextApplication=contextApplication
+    fun init(appContext: Application) {
+        this.appContext=appContext
     }
 
 }
