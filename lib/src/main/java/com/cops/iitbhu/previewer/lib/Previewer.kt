@@ -1,26 +1,19 @@
 package com.cops.iitbhu.previewer.lib
 
-import android.net.Uri
-import android.widget.ImageView
-import com.bumptech.glide.Glide
+object Previewer {
 
-class Previewer {
-    companion object{
-        private var instance : Previewer? = null
+    private lateinit var appContext: Application
 
-        fun getInstance() : Previewer {
-            if(instance==null) instance = Previewer()
-            return instance!!
-        }
+    fun init(appContext: Application) {
+        this.appContext = appContext
+      
     }
-
-    fun printHello() {
-        println("Hello World")
-    }
+     
     fun getVideoThumbnail(uri: Uri, imageView: ImageView)  {
         Glide.with(imageView)
             .asBitmap()
             .load(uri)
             .into(imageView)
     }
+
 }
