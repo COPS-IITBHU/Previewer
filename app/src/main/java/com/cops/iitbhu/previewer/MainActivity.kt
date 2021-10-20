@@ -10,7 +10,6 @@ import com.cops.iitbhu.previewer.lib.Previewer
 
 class MainActivity : AppCompatActivity() {
 
-
     private lateinit var img: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +30,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
 }
