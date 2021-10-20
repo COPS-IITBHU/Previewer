@@ -16,7 +16,7 @@ object Previewer {
 
     //Extracts video ID from Youtube video URL
     @Throws(MalformedURLException::class)
-    fun extractYoutubeId(url: String): String {
+    private fun extractYoutubeId(url: String): String {
         val param1: List<String> = url.split("&")
         val indexOfEqualsTo = param1[0].indexOf('=', 0)
 
@@ -31,7 +31,6 @@ object Previewer {
     fun thumbnailFromYoutube(imageview: ImageView, url: String) {
 
         val videoId = extractYoutubeId(url)
-        Log.d("VideoId is->", "" + videoId)
         val imageURL = "https://img.youtube.com/vi/$videoId/0.jpg"
 
         Glide.with(appContext).load(imageURL).into(imageview)
