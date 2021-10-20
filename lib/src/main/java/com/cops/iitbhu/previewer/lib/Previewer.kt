@@ -1,13 +1,6 @@
 package com.cops.iitbhu.previewer.lib
 
 import android.app.Application
-import android.graphics.Bitmap
-import android.graphics.pdf.PdfRenderer
-import android.net.Uri
-import android.os.Environment.DIRECTORY_PICTURES
-import android.os.ParcelFileDescriptor
-import java.io.File
-import java.io.FileOutputStream
 import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -20,48 +13,6 @@ object Previewer {
     fun init(appContext: Application) {
         this.appContext = appContext
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //Extracts video ID from Youtube video URL
     @Throws(MalformedURLException::class)
