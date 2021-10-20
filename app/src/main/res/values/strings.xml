@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Previewer</string>
+    <string name="bitmap_of_pdf">Generate bitmap of a PDF</string>
+    <string name="select_file">Select File</string>
+    <string name="thumbnail_of_youtube_video">Generate thumbnail of a youtube video"</string>
+    <string name="generate_thumbnail">Generate thumbnail</string>
+    <string name="img">Thumbnail/ Bitmap</string>
+    <string name="youtube_link">https://youtu.be/</string>
+    <string name="thumbnail_of_video">Generate thumbnail of video</string>
+    <string name="select_video">Select Video</string>
 </resources>
