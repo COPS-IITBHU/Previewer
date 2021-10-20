@@ -8,10 +8,6 @@ import android.os.Environment.DIRECTORY_PICTURES
 import android.os.ParcelFileDescriptor
 import java.io.File
 import java.io.FileOutputStream
-import android.util.Log
-import android.widget.ImageView
-
-import java.net.MalformedURLException
 
 object Previewer {
 
@@ -62,27 +58,4 @@ object Previewer {
             return null
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

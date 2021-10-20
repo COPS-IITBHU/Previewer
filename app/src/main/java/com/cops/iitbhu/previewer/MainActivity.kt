@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val selectFile: Button = findViewById(R.id.select_file)
-        val youtubeLink: EditText =findViewById(R.id.youtube_link)
-        val generateYouTubeThumbnail : Button = findViewById(R.id.generate_thumbnail_for_youtube)
         img = findViewById(R.id.img)
 
         selectFile.setOnClickListener(View.OnClickListener {
@@ -37,17 +34,6 @@ class MainActivity : AppCompatActivity() {
                 READ_EXTERNAL_STORAGE_PERMISSION_CODE
             )
         })
-
-
-
-
-
-
-
-
-
-
-
     }
 
 
