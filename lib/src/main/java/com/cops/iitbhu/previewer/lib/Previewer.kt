@@ -1,16 +1,13 @@
 package com.cops.iitbhu.previewer.lib
 
-class Previewer {
-    companion object{
-        private var instance : Previewer? = null
+import android.app.Application
 
-        fun getInstance() : Previewer {
-            if(instance==null) instance = Previewer()
-            return instance!!
-        }
+object Previewer {
+
+    private lateinit var appContext: Application
+
+    fun init(appContext: Application) {
+        this.appContext = appContext
     }
 
-    fun printHello() {
-        println("Hello World")
-    }
 }
