@@ -4,10 +4,11 @@ import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.pdf.PdfRenderer
 import android.net.Uri
-import android.os.Environment.DIRECTORY_PICTURES
+import android.os.Environment.DIRECTORY_DOCUMENTS
 import android.os.ParcelFileDescriptor
 import java.io.File
 import java.io.FileOutputStream
+import kotlin.math.min
 
 object Previewer {
 
@@ -18,11 +19,11 @@ object Previewer {
     }
 
     //Generates bitmap for pdf
-    fun generateBitmap(uri: Uri) : Bitmap?{
+    fun generateBitmapFromPdf(uri: Uri): Bitmap? {
 
         try {
             val fileName = "@${System.currentTimeMillis()}"
-            val storageDir = appContext.getExternalFilesDir(DIRECTORY_PICTURES)
+            val storageDir = appContext.getExternalFilesDir(DIRECTORY_DOCUMENTS)
             val file = File.createTempFile(fileName, ".pdf", storageDir!!)
             val inputStream = appContext.contentResolver.openInputStream(uri)!!
             val outputStream = FileOutputStream(file)
@@ -36,7 +37,8 @@ object Previewer {
             outputStream.close()
             inputStream.close()
 
-            val fileDescriptor = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
+            val fileDescriptor =
+                ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
             val pdfRenderer = PdfRenderer(fileDescriptor)
             val page = pdfRenderer.openPage(0)
             var bitmap: Bitmap = Bitmap.createBitmap(
@@ -46,14 +48,15 @@ object Previewer {
             )
 
             page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
-            bitmap = Bitmap.createBitmap(bitmap,0,0,page.width,(page.height)/3)
+            val size = min(page.height, page.width)
+            bitmap = Bitmap.createBitmap(bitmap, 0, 0, size, size)
 
+            file.delete()
             page.close()
             pdfRenderer.close()
             fileDescriptor.close()
             return bitmap
-        }
-        catch (e : Exception){
+        } catch (e: Exception) {
             println(e)
             return null
         }
