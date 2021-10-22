@@ -1,30 +1,26 @@
 package com.cops.iitbhu.previewer
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.cops.iitbhu.previewer.databinding.ActivityMainBinding
 import com.cops.iitbhu.previewer.lib.Previewer
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var img: ImageView
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        val youtubeLink: EditText = findViewById(R.id.youtube_link)
-        val generateYouTubeThumbnail: Button = findViewById(R.id.generate_thumbnail_for_youtube)
-        img = findViewById(R.id.img)
-
-        generateYouTubeThumbnail.setOnClickListener {
-            val youtubeLink = youtubeLink.text.toString()
+        binding.generateThumbnailForYoutube.setOnClickListener {
+            val youtubeLink = binding.youtubeLink.text.toString()
 
             if (youtubeLink.isNotEmpty()) {
-                Previewer.thumbnailFromYoutube(img, youtubeLink)
+                Previewer.setThumbnailFromYouTubeVideoUrl(youtubeLink, binding.img)
             } else {
                 Toast.makeText(this, "Please enter valid Youtube URL", Toast.LENGTH_SHORT).show()
             }
