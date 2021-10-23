@@ -13,8 +13,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val activityResultLauncherForVideoUri =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uriVideo: Uri ->
-            Previewer.setVideoThumbnailFromUri(uriVideo, binding.imgThumbnail)
+        registerForActivityResult(ActivityResultContracts.GetContent()) { videoUri: Uri ->
+            Previewer.setVideoThumbnailFromUri(videoUri, binding.imgThumbnail)
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
