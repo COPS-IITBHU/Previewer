@@ -22,6 +22,6 @@ class MainActivity : AppCompatActivity() {
 
     private val activityLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uriVideo: Uri ->
-            Previewer.getVideoThumbnail(uriVideo, binding.imgThumbnail)
+            Previewer.setVideoThumbnailFromUri(uriVideo, binding.imgThumbnail)
         }
 }

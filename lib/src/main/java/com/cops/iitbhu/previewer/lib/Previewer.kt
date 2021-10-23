@@ -13,7 +13,7 @@ object Previewer {
         this.appContext = appContext
     }
 
-    fun getVideoThumbnail(uri: Uri, imageView: ImageView) {
+    fun setVideoThumbnailFromUri(uri: Uri, imageView: ImageView) {
         Glide.with(imageView)
             .load(uri)
             .into(imageView)
