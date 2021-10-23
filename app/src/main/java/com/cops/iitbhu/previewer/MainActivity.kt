@@ -20,17 +20,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        binding.btnVideoThumbnailFromUri.setOnClickListener(View.OnClickListener { view ->
+        setContentView(binding.root)
+        binding.btnVideoThumbnailFromUri.setOnClickListener {
             activityResultLauncherForVideoUri.launch("video/*")
-        })
+        }
 
-        binding.btnVideoThumbnailFromUrl.setOnClickListener(View.OnClickListener { view ->
+        binding.btnVideoThumbnailFromUrl.setOnClickListener {
             Previewer.setVideoThumbnailFromUri(
                 Uri.parse("https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4"),
                 binding.imgThumbnail
             )
-        })
+        }
     }
 }
