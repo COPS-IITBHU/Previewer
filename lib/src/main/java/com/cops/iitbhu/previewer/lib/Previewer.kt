@@ -15,7 +15,6 @@ object Previewer {
 
     fun getVideoThumbnail(uri: Uri, imageView: ImageView) {
         Glide.with(imageView)
-            .asBitmap()
             .load(uri)
             .into(imageView)
     }
