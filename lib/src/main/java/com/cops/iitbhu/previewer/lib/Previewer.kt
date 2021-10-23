@@ -11,7 +11,6 @@ object Previewer {
 
     fun init(appContext: Application) {
         this.appContext = appContext
-
     }
 
     fun getVideoThumbnail(uri: Uri, imageView: ImageView) {
