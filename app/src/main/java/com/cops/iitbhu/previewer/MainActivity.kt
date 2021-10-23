@@ -12,18 +12,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-
-        binding.selectFile.setOnClickListener(View.OnClickListener {
-            getUriOfPdf.launch(arrayOf("application/pdf"))
-        })
-    }
-
-
     private val getUriOfPdf =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
 
@@ -36,4 +24,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.selectFile.setOnClickListener(View.OnClickListener {
+            getUriOfPdf.launch(arrayOf("application/pdf"))
+        })
+    }
 }
