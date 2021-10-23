@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Previewer.init(application)
         imgThumbnail = findViewById(R.id.imgThumbnail)
         btnVideoThumbnail = findViewById(R.id.btnVideoThumbnail)
         btnVideoThumbnail.setOnClickListener(View.OnClickListener { view ->
