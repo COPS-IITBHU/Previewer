@@ -21,8 +21,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        binding.btnVideoThumbnail.setOnClickListener(View.OnClickListener { view ->
+        binding.btnVideoThumbnailFromUri.setOnClickListener(View.OnClickListener { view ->
             activityResultLauncherForVideoUri.launch("video/*")
+        })
+
+        binding.btnVideoThumbnailFromUrl.setOnClickListener(View.OnClickListener { view ->
+            Previewer.setVideoThumbnailFromUri(
+                Uri.parse("https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4"),
+                binding.imgThumbnail
+            )
         })
     }
 }

@@ -7,16 +7,25 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnVideoThumbnail"
+        android:id="@+id/btnVideoThumbnailFromUri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="150dp"
         android:text="Video Thumbnail\nfrom Storage"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/btnVideoThumbnailFromUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="152dp"
+        android:text="Video Thumbnail\nfrom URL"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/btnVideoThumbnailFromUri" />
 
     <ImageView
         android:id="@+id/imgThumbnail"
