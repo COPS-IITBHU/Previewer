@@ -9,6 +9,7 @@ import com.cops.iitbhu.previewer.databinding.ActivityMainBinding
 import com.cops.iitbhu.previewer.lib.Previewer
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
 
     private val activityResultLauncherForVideoUri =
