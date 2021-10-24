@@ -3,7 +3,7 @@
     package="com.cops.iitbhu.previewer">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <applicationA
+    <application
         android:name=".DemoApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -20,6 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </applicationA>
+    </application>
 
 </manifest>
