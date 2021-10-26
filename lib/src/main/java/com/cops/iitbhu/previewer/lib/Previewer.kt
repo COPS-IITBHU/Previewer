@@ -2,7 +2,10 @@ package com.cops.iitbhu.previewer.lib
 
 import android.app.Application
 import android.widget.ImageView
-import com.bumptech.glide.Glide
+import android.graphics.BitmapFactory
+import android.util.Log
+import java.io.IOException
+import java.net.URL
 
 object Previewer {
 
@@ -12,19 +15,40 @@ object Previewer {
         this.appContext = appContext
     }
 
-    //Creates thumbnail from Youtube video URL
-    fun setThumbnailFromYouTubeVideoUrl(url: String, imageView: ImageView) {
+    /**
+     * Generates an image ID from the youtube video link
+     * @param youtubeLink
+     * @return Image ID
+     */
+    private fun youtubeLinkToImageUrl(youtubeLink: String): String {
 
         val regex =
             "^((?:https?:)?//)?((?:www|m)\\.)?(youtube\\.com|youtu.be|youtube-nocookie.com)(/(?:[\\w\\-]+\\?v=|feature=|watch\\?|e/|embed/|v/)?)([\\w\\-]+)(\\S+)?\$"
 
-        val videoId = Regex(regex).matchEntire(url)?.groupValues?.get(5)
-            ?: throw IllegalArgumentException("Invalid youtube video url")
+        return Regex(regex).matchEntire(youtubeLink)?.groupValues?.get(5)
+            ?: throw IllegalArgumentException("Invalid youtube video url")          //Checks if the given youtube Link is valid, else throws exception
+    }
 
-        val imageUrl = "https://img.youtube.com/vi/$videoId/0.jpg"
+    /**
+     * Takes youtube video link, generates the thumbnail for the video and set it in the imageview passed
+     * @param youtubeLink
+     * @param imageView
+     */
+    fun setThumbnailFromYouTubeVideoUrl(youtubeLink: String, imageView: ImageView) {
 
-        Glide.with(imageView.context)
-            .load(imageUrl)
-            .into(imageView)
+        val imageId = youtubeLinkToImageUrl(youtubeLink)
+        val imageUrl = "https://img.youtube.com/vi/$imageId/0.jpg"
+
+        try {
+            val url = URL(imageUrl)
+            val image = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+            imageView.setImageBitmap(image)
+        } catch (e: IOException) {
+            Log.e("Error: ", e.toString())
+        }
+
+//        Glide.with(imageView.context)
+//            .load(imageUrl)
+//            .into(imageView)
     }
 }
