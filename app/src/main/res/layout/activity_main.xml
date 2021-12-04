@@ -13,7 +13,8 @@
         android:layout_above="@+id/generate_pdf_bitmap"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:contentDescription="@string/img" />
+        android:contentDescription="@string/img"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/generate_pdf_bitmap"
@@ -28,11 +29,9 @@
         android:id="@+id/select_file"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
         android:backgroundTint="@color/black"
         android:text="@string/select_file" />
-
 
     <TextView
         android:id="@+id/thumbnail_text"
