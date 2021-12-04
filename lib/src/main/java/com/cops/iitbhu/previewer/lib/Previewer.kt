@@ -24,13 +24,10 @@ object Previewer {
      * @param youtubeLink
      * @return Image ID
      */
-    fun youtubeLinkToImageUrl(youtubeLink: String): String {
-
+    fun youtubeLinkToImageUrl(youtubeLink: String): String? {
         val regex =
             "^((?:https?:)?//)?((?:www|m)\\.)?(youtube\\.com|youtu.be|youtube-nocookie.com)(/(?:[\\w\\-]+\\?v=|feature=|watch\\?|e/|embed/|v/)?)([\\w\\-]+)(\\S+)?\$"
-
         return Regex(regex).matchEntire(youtubeLink)?.groupValues?.get(5)
-            ?: throw IllegalArgumentException("Invalid youtube video url")          //Checks if the given youtube Link is valid, else throws exception
     }
 
     /**
@@ -57,7 +54,6 @@ object Previewer {
                 val bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
                 bitmap
             } catch (e: IOException) {
-                Log.e("Error: ", e.toString())
                 null
             }
         }
