@@ -108,4 +108,11 @@ object Previewer {
             return null
         }
     }
+
+    fun setVideoThumbnailFromUri(uri: Uri, imageView: ImageView) {
+        Glide.with(imageView)
+            .load(uri)
+            .into(imageView)
+    }
+
 }
