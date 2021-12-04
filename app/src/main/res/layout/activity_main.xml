@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
     tools:context=".MainActivity">
 
@@ -82,5 +83,36 @@
         android:layout_centerVertical="true"
         android:backgroundTint="@color/black"
         android:text="@string/select_video" />
+
+
+<!--    <Button-->
+<!--        android:id="@+id/btnVideoThumbnailFromUri"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="150dp"-->
+<!--        android:text="Video Thumbnail\nfrom Storage"-->
+<!--        android:textAllCaps="false"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+<!--    <Button-->
+<!--        android:id="@+id/btnVideoThumbnailFromUrl"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="152dp"-->
+<!--        android:text="Video Thumbnail\nfrom URL"-->
+<!--        android:textAllCaps="false"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/btnVideoThumbnailFromUri" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imgThumbnail"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 </RelativeLayout>

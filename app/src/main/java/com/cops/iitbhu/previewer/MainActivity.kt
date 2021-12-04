@@ -13,6 +13,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+//    private val activityResultLauncherForVideoUri =
+//        registerForActivityResult(ActivityResultContracts.GetContent()) { videoUri: Uri ->
+//            Previewer.setVideoThumbnailFromUri(videoUri, binding.imgThumbnail)
+//        }
+
     private val getUriOfPdf =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
 
@@ -44,6 +49,17 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter valid Youtube URL", Toast.LENGTH_SHORT).show()
             }
         }
+
+//        binding.btnVideoThumbnailFromUri.setOnClickListener {
+//            activityResultLauncherForVideoUri.launch("video/*")
+//        }
+//
+//        binding.btnVideoThumbnailFromUrl.setOnClickListener {
+//            Previewer.setVideoThumbnailFromUri(
+//                Uri.parse("https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4"),
+//                binding.imgThumbnail
+//            )
+//        }
     }
 
     private fun setThumbnail(youtubeLink: String) {
