@@ -3,19 +3,18 @@ package com.cops.iitbhu.previewer.lib
 import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import java.io.IOException
-import java.net.URL
 import android.graphics.pdf.PdfRenderer
 import android.net.Uri
 import android.os.Environment.DIRECTORY_DOCUMENTS
 import android.os.ParcelFileDescriptor
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
+import java.io.IOException
+import java.net.URL
 import kotlin.math.min
 
 object Previewer {
@@ -65,7 +64,7 @@ object Previewer {
             }
         }
     }
-    
+
     //Generates bitmap for pdf
     fun generateBitmapFromPdf(uri: Uri): Bitmap? {
 
