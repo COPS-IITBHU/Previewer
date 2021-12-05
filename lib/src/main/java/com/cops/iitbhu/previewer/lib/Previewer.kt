@@ -4,6 +4,7 @@ import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.pdf.PdfRenderer
+import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Environment.DIRECTORY_DOCUMENTS
 import android.os.ParcelFileDescriptor
@@ -113,6 +114,24 @@ object Previewer {
         Glide.with(imageView)
             .load(uri)
             .into(imageView)
+    }
+
+    /**
+     * Generates a bitmap for video
+     * @param Video URI
+     * @return Bitmap
+     */
+    suspend fun getVideoThumbnailFromUri(uri: Uri): Bitmap? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val mMR = MediaMetadataRetriever()
+                mMR.setDataSource(appContext, uri)
+                val bitmap = mMR.frameAtTime
+                bitmap
+            } catch (e: IOException) {
+                null
+            }
+        }
     }
 
 }
