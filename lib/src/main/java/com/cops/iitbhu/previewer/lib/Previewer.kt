@@ -14,7 +14,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
-import java.io.IOException
 import java.net.URL
 import kotlin.math.min
 
@@ -60,7 +59,7 @@ object Previewer {
                 val url = URL(imageUrl)
                 val bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
                 bitmap
-            } catch (e: IOException) {
+            } catch (e: Exception) {
                 null
             }
         }
@@ -117,18 +116,36 @@ object Previewer {
     }
 
     /**
-     * Generates a bitmap for video
-     * @param Video URI
-     * @return Bitmap
+     * Generates a bitmap for remote video file
+     * @param uri Uri of the remote video file
+     * @return Bitmap of the first frame of the video corresponding to given uri
      */
-    suspend fun getVideoThumbnailFromUri(uri: Uri): Bitmap? {
+    suspend fun getThumbnailFromRemoteVideoUri(uri: Uri): Bitmap? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val mMR = MediaMetadataRetriever()
+                mMR.setDataSource(uri.toString(), mapOf())
+                val bitmap = mMR.frameAtTime
+                bitmap
+            } catch (e: Exception) {
+                null
+            }
+        }
+    }
+
+    /**
+     * Generates a bitmap for local video file
+     * @param uri Uri of the local video file
+     * @return Bitmap of the first frame of the video corresponding to given uri
+     */
+    suspend fun getThumbnailFromLocalVideoUri(uri: Uri): Bitmap? {
         return withContext(Dispatchers.IO) {
             try {
                 val mMR = MediaMetadataRetriever()
                 mMR.setDataSource(appContext, uri)
                 val bitmap = mMR.frameAtTime
                 bitmap
-            } catch (e: IOException) {
+            } catch (e: Exception) {
                 null
             }
         }
