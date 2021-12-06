@@ -4,6 +4,7 @@ import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.pdf.PdfRenderer
+import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Environment.DIRECTORY_DOCUMENTS
 import android.os.ParcelFileDescriptor
@@ -13,7 +14,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
-import java.io.IOException
 import java.net.URL
 import kotlin.math.min
 
@@ -59,7 +59,7 @@ object Previewer {
                 val url = URL(imageUrl)
                 val bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
                 bitmap
-            } catch (e: IOException) {
+            } catch (e: Exception) {
                 null
             }
         }
@@ -113,6 +113,38 @@ object Previewer {
         Glide.with(imageView)
             .load(uri)
             .into(imageView)
+    }
+
+    /**
+     * Generates a bitmap for remote video file
+     * @param uri Uri of the remote video file
+     * @return Bitmap of the first frame of the video corresponding to given uri
+     */
+    suspend fun getThumbnailFromRemoteVideoUri(uri: Uri): Bitmap? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val mMR = MediaMetadataRetriever()
+                mMR.setDataSource(uri.toString(), mapOf())
+                mMR.frameAtTime
+            } catch (e: Exception) {
+                null
+            }
+        }
+    }
+
+    /**
+     * Generates a bitmap for local video file
+     * @param uri Uri of the local video file
+     * @return Bitmap of the first frame of the video corresponding to given uri
+     */
+    fun getThumbnailFromLocalVideoUri(uri: Uri): Bitmap? {
+        return try {
+            val mMR = MediaMetadataRetriever()
+            mMR.setDataSource(appContext, uri)
+            mMR.frameAtTime
+        } catch (e: Exception) {
+            null
+        }
     }
 
 }
