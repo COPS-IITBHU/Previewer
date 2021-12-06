@@ -125,8 +125,7 @@ object Previewer {
             try {
                 val mMR = MediaMetadataRetriever()
                 mMR.setDataSource(uri.toString(), mapOf())
-                val bitmap = mMR.frameAtTime
-                bitmap
+                mMR.frameAtTime
             } catch (e: Exception) {
                 null
             }
@@ -138,16 +137,13 @@ object Previewer {
      * @param uri Uri of the local video file
      * @return Bitmap of the first frame of the video corresponding to given uri
      */
-    suspend fun getThumbnailFromLocalVideoUri(uri: Uri): Bitmap? {
-        return withContext(Dispatchers.IO) {
-            try {
-                val mMR = MediaMetadataRetriever()
-                mMR.setDataSource(appContext, uri)
-                val bitmap = mMR.frameAtTime
-                bitmap
-            } catch (e: Exception) {
-                null
-            }
+    fun getThumbnailFromLocalVideoUri(uri: Uri): Bitmap? {
+        return try {
+            val mMR = MediaMetadataRetriever()
+            mMR.setDataSource(appContext, uri)
+            mMR.frameAtTime
+        } catch (e: Exception) {
+            null
         }
     }
 
