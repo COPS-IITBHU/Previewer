@@ -30,7 +30,7 @@ object Previewer {
      * @param youtubeLink
      * @return Image ID
      */
-    fun youtubeLinkToImageUrl(youtubeLink: String): String? {
+    internal fun youtubeLinkToImageUrl(youtubeLink: String): String? {
         val regex =
             "^((?:https?:)?//)?((?:www|m)\\.)?(youtube\\.com|youtu.be|youtube-nocookie.com)(/(?:[\\w\\-]+\\?v=|feature=|watch\\?|e/|embed/|v/)?)([\\w\\-]+)(\\S+)?\$"
         return Regex(regex).matchEntire(youtubeLink)?.groupValues?.get(5)
@@ -126,14 +126,14 @@ object Previewer {
 
     /**
      * Generates a bitmap for remote video file
-     * @param uri Uri of the remote video file as a String
-     * @return Bitmap of the first frame of the video corresponding to given uri
+     * @param url Url of the remote video file as a String
+     * @return Bitmap of the first frame of the video corresponding to given url
      */
-    suspend fun getThumbnailFromRemoteVideoUri(uri: String): Bitmap? {
+    suspend fun getThumbnailFromRemoteVideoUri(url: String): Bitmap? {
         return withContext(Dispatchers.IO) {
             try {
                 val mMR = MediaMetadataRetriever()
-                mMR.setDataSource(uri, mapOf())
+                mMR.setDataSource(url, mapOf())
                 mMR.frameAtTime
             } catch (e: Exception) {
                 null
