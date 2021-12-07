@@ -126,8 +126,8 @@ object Previewer {
 
     /**
      * Generates a bitmap for remote video file
-     * @param uri Uri of the remote video file as a String
-     * @return Bitmap of the first frame of the video corresponding to given uri
+     * @param url Url of the remote video file as a String
+     * @return Bitmap of the first frame of the video corresponding to given url
      */
     suspend fun getThumbnailFromRemoteVideoUri(url: String): Bitmap? {
         return withContext(Dispatchers.IO) {
