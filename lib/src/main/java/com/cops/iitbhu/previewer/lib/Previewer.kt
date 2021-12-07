@@ -51,7 +51,12 @@ object Previewer {
             .into(imageView)
     }
 
-    suspend fun getThumbnailFromVideoUrl(youtubeLink: String): Bitmap? {
+    /**
+     * Generates a bitmap for youtube video
+     * @param youtubeLink
+     * @return Bitmap of the first frame of the video corresponding to given link
+     */
+    suspend fun getThumbnailFromYoutubeVideoUrl(youtubeLink: String): Bitmap? {
         return withContext(Dispatchers.IO) {
             try {
                 val imageId = youtubeLinkToImageUrl(youtubeLink)
@@ -65,7 +70,11 @@ object Previewer {
         }
     }
 
-    //Generates bitmap for pdf
+    /**
+     * Generates a bitmap for PDF
+     * @param uri Uri of the PDF file
+     * @return Bitmap of the first page of PDF corresponding to given Uri
+     */
     fun generateBitmapFromPdf(uri: Uri): Bitmap? {
 
         try {
@@ -117,14 +126,14 @@ object Previewer {
 
     /**
      * Generates a bitmap for remote video file
-     * @param uri Uri of the remote video file
+     * @param uri Uri of the remote video file as a String
      * @return Bitmap of the first frame of the video corresponding to given uri
      */
-    suspend fun getThumbnailFromRemoteVideoUri(uri: Uri): Bitmap? {
+    suspend fun getThumbnailFromRemoteVideoUri(uri: String): Bitmap? {
         return withContext(Dispatchers.IO) {
             try {
                 val mMR = MediaMetadataRetriever()
-                mMR.setDataSource(uri.toString(), mapOf())
+                mMR.setDataSource(uri, mapOf())
                 mMR.frameAtTime
             } catch (e: Exception) {
                 null
