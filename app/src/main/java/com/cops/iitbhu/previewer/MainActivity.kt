@@ -15,15 +15,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.pdf.setOnClickListener{
+        binding.pdf.setOnClickListener {
             startActivity(Intent(this, PdfToBitmapActivity::class.java))
         }
 
-        binding.youtubeLink.setOnClickListener{
+        binding.youtubeLink.setOnClickListener {
             startActivity(Intent(this, YoutubeVideoToBitmapActivity::class.java))
         }
 
-        binding.videoUri.setOnClickListener{
+        binding.videoUri.setOnClickListener {
             startActivity(Intent(this, VideoToBitmapActivity::class.java))
         }
     }

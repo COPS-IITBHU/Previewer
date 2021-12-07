@@ -13,13 +13,9 @@ class VideoToBitmapActivity : AppCompatActivity() {
 
     private val activityResultLauncherForVideoUri =
         registerForActivityResult(ActivityResultContracts.GetContent()) { videoUri: Uri ->
-            lifecycleScope.launchWhenCreated {
-                val bitmap = Previewer.getThumbnailFromLocalVideoUri(videoUri)
-                binding.image.setImageBitmap(bitmap)
-            }
+            val bitmap = Previewer.getThumbnailFromLocalVideoUri(videoUri)
+            binding.image.setImageBitmap(bitmap)
         }
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +28,9 @@ class VideoToBitmapActivity : AppCompatActivity() {
 
         binding.remoteVideo.setOnClickListener {
             lifecycleScope.launchWhenCreated {
-                val bitmap = Previewer.getThumbnailFromRemoteVideoUri(Uri.parse("https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4%22"))
+                val url =
+                    "https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4%22"
+                val bitmap = Previewer.getThumbnailFromRemoteVideoUri(url)
                 binding.image.setImageBitmap(bitmap)
             }
         }

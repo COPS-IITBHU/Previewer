@@ -126,14 +126,14 @@ object Previewer {
 
     /**
      * Generates a bitmap for remote video file
-     * @param uri Uri of the remote video file
+     * @param uri Uri of the remote video file as a String
      * @return Bitmap of the first frame of the video corresponding to given uri
      */
-    suspend fun getThumbnailFromRemoteVideoUri(uri: Uri): Bitmap? {
+    suspend fun getThumbnailFromRemoteVideoUri(uri: String): Bitmap? {
         return withContext(Dispatchers.IO) {
             try {
                 val mMR = MediaMetadataRetriever()
-                mMR.setDataSource(uri.toString(), mapOf())
+                mMR.setDataSource(uri, mapOf())
                 mMR.frameAtTime
             } catch (e: Exception) {
                 null

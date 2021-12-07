@@ -11,21 +11,23 @@ import com.cops.iitbhu.previewer.lib.Previewer
 class PdfToBitmapActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPdfToBitmapBinding
 
-    private val getUriOfPdf = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        if (uri != null) {
-            val bitmap = Previewer.generateBitmapFromPdf(uri)
-            if (bitmap != null)
-                binding.image.setImageBitmap(bitmap)
-            else
-                Toast.makeText(this, "Unable to generate bitmap!", Toast.LENGTH_SHORT).show()
+    private val getUriOfPdf =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+            if (uri != null) {
+                val bitmap = Previewer.generateBitmapFromPdf(uri)
+                if (bitmap != null)
+                    binding.image.setImageBitmap(bitmap)
+                else
+                    Toast.makeText(this, "Unable to generate bitmap!", Toast.LENGTH_SHORT).show()
+            }
         }
-    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPdfToBitmapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.selectFile.setOnClickListener{
+        binding.selectFile.setOnClickListener {
             getUriOfPdf.launch(arrayOf("application/pdf"))
         }
     }

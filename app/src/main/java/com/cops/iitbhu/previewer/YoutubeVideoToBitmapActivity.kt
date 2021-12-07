@@ -23,7 +23,7 @@ class YoutubeVideoToBitmapActivity : AppCompatActivity() {
             }
         }
 
-        binding.generateThumbnailForYoutubeNonSuspendFunc.setOnClickListener{
+        binding.generateThumbnailForYoutubeNonSuspendFunc.setOnClickListener {
             val youtubeLink = binding.youtubeLink.text.toString()
             if (youtubeLink.isNotEmpty()) {
                 Previewer.setThumbnailFromYouTubeVideoUrl(youtubeLink, binding.image)
