@@ -8,7 +8,7 @@ class RegexTest {
 
     @Test
     fun checkRegexIsValid() {
-        val links= listOf(
+        val links = listOf(
             "https://www.youtube.com/watch?v=DFYRQ_zQ-gk",
             "https://www.youtube.com/watch?v=DFYRQ_zQ-gk&feature=featured",
             "https://www.youtube.com/watch?v=DFYRQ_zQ-gk",
@@ -43,10 +43,9 @@ class RegexTest {
             "//youtu.be/DFYRQ_zQ-gk",
             "youtu.be/DFYRQ_zQ-gk",
             "https://www.youtube.com/HamdiKickProduction?v=DFYRQ_zQ-gk",
-
         )
         val expected = "DFYRQ_zQ-gk"
-        links.forEach{ link->
+        links.forEach { link ->
             val actual = Previewer.youtubeLinkToImageUrl(link)
             assertEquals(expected, actual)
         }
