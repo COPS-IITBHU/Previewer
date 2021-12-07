@@ -8,11 +8,13 @@
     <string name="youtube_link">https://youtu.be/</string>
     <string name="thumbnail_of_video">Generate thumbnail of video</string>
     <string name="select_video">Select Video</string>
-    <string name="generate_thumbnail_video_url">Generate thumbnail of video using URL</string>
-    <string name="generate_thumbnail_video_uri">Generate thumbnail of video using URI</string>
+    <string name="generate_thumbnail_video_url">Generate thumbnail of remote video</string>
+    <string name="generate_thumbnail_video_uri">Generate thumbnail of local video</string>
     <string name="bitmap_from_pdf">Bitmap from PDF</string>
     <string name="bitmap_of_video">Bitmap of Video</string>
     <string name="bitmap_from_youtube">Bitmap from Youtube</string>
     <string name="previewer_demo_application">Previewer Demo Application</string>
+    <string name="suspend_function_call">(Suspend function call)</string>
+    <string name="non_suspend_function_call">(Non-suspend function call)</string>
 </resources>
 

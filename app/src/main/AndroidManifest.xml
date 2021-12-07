@@ -13,14 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Previewer">
         <activity
-            android:name=".BitmapVideo"
-            android:exported="true" />
+            android:name=".VideoToBitmapActivity"
+            android:exported="false" />
         <activity
-            android:name=".BitmapYoutube"
-            android:exported="true" />
+            android:name=".YoutubeVideoToBitmapActivity"
+            android:exported="false" />
         <activity
-            android:name=".BitmapPDF"
-            android:exported="true" />
+            android:name=".PdfToBitmapActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import com.cops.iitbhu.previewer.databinding.ActivityBitmapPdfBinding
+import com.cops.iitbhu.previewer.databinding.ActivityPdfToBitmapBinding
 import com.cops.iitbhu.previewer.lib.Previewer
 
-class BitmapPDF : AppCompatActivity() {
-    private lateinit var binding: ActivityBitmapPdfBinding
+class PdfToBitmapActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPdfToBitmapBinding
 
     private val getUriOfPdf = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri != null) {
@@ -22,11 +22,11 @@ class BitmapPDF : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBitmapPdfBinding.inflate(layoutInflater)
+        binding = ActivityPdfToBitmapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.selectFile.setOnClickListener(View.OnClickListener {
+        binding.selectFile.setOnClickListener{
             getUriOfPdf.launch(arrayOf("application/pdf"))
-        })
+        }
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BitmapVideo">
+    tools:context=".VideoToBitmapActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -27,7 +27,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:contentDescription="@string/img"
-        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -44,10 +43,10 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/generate_thumbnail_of_video_url" />
+        app:layout_constraintTop_toBottomOf="@+id/remote_video" />
 
     <Button
-        android:id="@+id/generate_thumbnail_of_video_uri"
+        android:id="@+id/select_local_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -71,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/image" />
 
     <Button
-        android:id="@+id/generate_thumbnail_of_video_url"
+        android:id="@+id/remote_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
